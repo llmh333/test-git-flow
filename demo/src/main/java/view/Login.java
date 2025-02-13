@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 public class Login extends JFrame {
 
@@ -13,6 +14,7 @@ public class Login extends JFrame {
     private JLabel labelPassword;
     private JButton btnSignIn;
     private JCheckBox boxShowPassword;
+    private JLabel labelRegister;
 
     public void addFormLogin() {
         panelScreen = new JPanel();
@@ -42,13 +44,18 @@ public class Login extends JFrame {
         btnSignIn.setBounds(100,320 , 400, 30);
         btnSignIn.setFocusPainted(false);
 
+        labelRegister = new JLabel("I haven't account? Register now");
+        labelRegister.setFont(new Font("Time New Romans", Font.PLAIN,10));
+        labelRegister.setForeground(Color.blue);
+        labelRegister.setBounds(100,352,200,15);
+
         panelScreen.add(labelUsername);
         panelScreen.add(labelPassword);
         panelScreen.add(txtUsername);
         panelScreen.add(txtPassword);
         panelScreen.add(boxShowPassword);
         panelScreen.add(btnSignIn);
-
+        panelScreen.add(labelRegister);
         this.add(panelScreen);
     }
 
@@ -70,14 +77,18 @@ public class Login extends JFrame {
         btnSignIn.addActionListener(listener);
     }
 
+    public void setLabelRegister(MouseListener listener) {
+        labelRegister.addMouseListener(listener);
+    }
+
+
+
     public Login() {
         this.setSize(new Dimension(600,600));
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("My App");
         addFormLogin();
-
-
-        this.setVisible(true);
     }
 
     public static void main(String[] args) {
